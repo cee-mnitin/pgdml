@@ -1,0 +1,5 @@
+smtpserver_host=smtp.gmail.com
+smtpserver_port=465
+username=mnitin73.upgrad@gmail.com
+password=5R3FT9XFXK
+from_email=mnitin73.upgrad@gmail.com

@@ -1,0 +1,27 @@
+digraph  {
+0 [class="start active", fillcolor=green, fontsize=12, label=START, style=filled];
+"-1" [class=end, fillcolor=red, fontsize=12, label=END, style=filled];
+1 [class=active, fontsize=12, label=action_session_start];
+2 [class="", fontsize=12, label=utter_greet];
+"-3" [class=ellipsis, label="..."];
+5 [class="", fontsize=12, label=action_location_valid];
+11 [class="", fontsize=12, label=utter_ask_location];
+"-6" [class=ellipsis, label="..."];
+"-7" [class=ellipsis, label="..."];
+16 [class="intent dashed active", label="  ?  ", shape=rect];
+17 [class=intent, fillcolor=lightblue, label="Hello!", shape=rect, style=filled];
+18 [class=intent, fillcolor=lightblue, label="I’m hungry. Looking out for some good chinese restaurants in chandigarh", shape=rect, style=filled];
+19 [class=intent, fillcolor=lightblue, label="I’m hungry. Looking out for some good restaurants", shape=rect, style=filled];
+0 -> "-1"  [class="", key=NONE, label=""];
+0 -> 1  [class=active, key=NONE, label=""];
+1 -> 16  [class=active, key=NONE, label=""];
+1 -> 17  [class="", key=0];
+2 -> "-3"  [class="", key=NONE, label=""];
+2 -> 18  [class="", key=0];
+2 -> 19  [class="", key=0];
+5 -> "-7"  [class="", key=NONE, label=""];
+11 -> "-6"  [class="", key=NONE, label=""];
+17 -> 2  [class="", key=0];
+18 -> 5  [class="", key=0];
+19 -> 11  [class="", key=0];
+}

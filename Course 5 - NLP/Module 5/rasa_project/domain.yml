@@ -1,0 +1,148 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform_price
+- inform_location
+- inform_cuisine
+- greet
+- inform_email
+- restaurant_search
+- affirm
+- thank
+- goodbye
+- deny
+- stop
+entities:
+- cuisine
+- email
+- location
+- price
+slots:
+  cuisine:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+  email:
+    type: text
+    influence_conversation: true
+  price:
+    type: categorical
+    influence_conversation: true
+    values:
+    - low
+    - med
+    - high
+    - all
+  email_response:
+    type: text
+    influence_conversation: true
+  location_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+  cuisine_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+  search_validity:
+    type: categorical
+    influence_conversation: true
+    values:
+    - valid
+    - invalid
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - title: Chinese
+      payload: /inform_cuisine{{"cuisine":"chinese"}}
+    - title: Italian
+      payload: /inform_cuisine{{"cuisine":"italian"}}
+    - title: South Indian
+      payload: /inform_cuisine{{"cuisine":"south indian"}}
+    - title: North Indian
+      payload: /inform_cuisine{{"cuisine":"north indian"}}
+    - title: Mexican
+      payload: /inform_cuisine{{"cuisine":"mexican"}}
+    - title: American
+      payload: /inform_cuisine{{"cuisine":"american"}}
+    text: what kind of cuisine would you like?
+  utter_ask_howcanhelp:
+  - text: How can I help you?
+  utter_ask_location:
+  - text: Where do you live?
+  - text: Please give me your location.
+  utter_ask_price:
+  - buttons:
+    - payload: /inform_price{{"price":"low"}}
+      title: Lesser than Rs. 300
+    - payload: /inform_price{{"price":"mid"}}
+      title: Rs. 300 to 700
+    - payload: /inform_price{{"price":"high"}}
+      title: More than 700
+    - payload: /inform_price{{"price":"all"}}
+      title: Any budget / price
+    text: what is your price range?
+  utter_goodbye:
+  - text: Goodbye. Have a nice day.
+  - text: Bye-bye. Have a nice day.
+  utter_default:
+  - text: Sorry, I did not understand.
+  utter_greet:
+  - text: Hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_email_prompt:
+  - text: Do you want me to send the top 10 to your email?
+  utter_ask_email:
+  - text: please enter your email
+  utter_location_invalid:
+  - text: Sorry, we do not serve at the requested location.
+  utter_ask_location_retry:
+  - text: Can I help you look for a restaurant at some other location?
+  utter_cuisine_invalid:
+  - text: Sorry. We do not serve the requested cuisine.
+  utter_ask_cuisine_retry:
+  - text: Would you like to search for some other cuisine?
+  utter_confirm_email:
+  - text: An email has been sent to you.
+  utter_deny:
+  - text: Sorry, hope to serve you better next time.
+  utter_happy:
+  - text: That is Great!
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_search_invalid:
+  - text: Sorry, we do not have any restaurants which match your requirements. Hope to serve you better next time!
+actions:
+- action_cuisine_valid
+- action_location_valid
+- action_restart
+- action_search_restaurants
+- action_send_mail
+- action_slot_reset
+- utter_ask_cuisine
+- utter_ask_cuisine_retry
+- utter_ask_email
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_location_retry
+- utter_ask_price
+- utter_confirm_email
+- utter_cuisine_invalid
+- utter_default
+- utter_deny
+- utter_did_that_help
+- utter_email_prompt
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_location_invalid
+- utter_search_invalid
